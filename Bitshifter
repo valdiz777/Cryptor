@@ -1,0 +1,47 @@
+package me.val.encrypyt;
+
+public class Bitshifter
+{
+	private static final int[] chain= rando(1,2000);
+	public static String encrypt(String key)
+	{
+		String result = "";
+		int l = key.length();
+		char ch;
+		int ck=0;
+		for(int i = 0; i<l;i++)
+		{
+			if (ck>=chain.length-1)ck=0;
+			ch = key.charAt(i);
+			ch +=chain[ck];
+			result +=ch;
+			ck++;
+		}
+		return result;
+	}
+	public static String deencrypt(String key)
+	{
+		String result = "";
+		int l = key.length();
+		char ch;
+		int ck=0;
+		for(int i = 0; i<l;i++)
+		{
+			if (ck>=chain.length-1)ck=0;
+			ch = key.charAt(i);
+			ch -=chain[ck];
+			result +=ch;
+			ck++;
+		}
+		return result;
+	}
+	static int[] rando(int min, int max)
+	{
+		int[] chain= new int[100];
+		for(int i=0; i<100; i++)
+		{
+			chain[i]=min+(int)(Math.random()*(max-min));
+		}
+		return chain;
+	}
+}
