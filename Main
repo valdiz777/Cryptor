@@ -1,0 +1,19 @@
+package me.val.encrypyt;
+
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) 
+	{
+		Scanner user = new Scanner(System.in);
+		System.out.println("Enter your username:");
+		String passcode = Bitshifter.encrypt(user.nextLine());
+		System.out.println(passcode);
+		System.out.println(Bitshifter.deencrypt(passcode));
+		
+		user.close();
+		DataWriter.write(passcode);
+	}
+
+}
