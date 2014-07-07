@@ -1,0 +1,20 @@
+package me.val.encrypyt;
+
+import java.io.*;
+
+public class DataWriter 
+{
+	public static void write(String stuff)
+	{
+		try {
+			BufferedWriter writer= new BufferedWriter(new FileWriter(new File("encryptdata.txt")));
+			writer.write(stuff);
+			writer.flush();
+			writer.close();
+			System.out.println("Done");
+		} catch (IOException e) 
+		{
+			System.err.println("IO exception caught!");
+		}
+	}
+}
